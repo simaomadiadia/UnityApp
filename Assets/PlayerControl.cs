@@ -6,7 +6,8 @@ public class PlayerControl : MonoBehaviour
     
     public Rigidbody rb;
 
-    public float xmin, xmax,zmin,zmax;    public float speed;
+    public float xmin, xmax,zmin,zmax;    
+    public float speed,tilt;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     { 
@@ -23,6 +24,9 @@ public class PlayerControl : MonoBehaviour
 
         // area control
         rb.position= new Vector3(Math.Clamp(rb.position.x,xmin,xmax) ,0.0f, Math.Clamp(rb.position.z,zmin,zmax));
+    
+       //Tilt control
+       rb.rotation =Quaternion.Euler(0.0f ,0.0f ,rb.linearVelocity.x*tilt);
     }
     
 
