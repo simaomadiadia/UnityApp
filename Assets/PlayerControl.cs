@@ -13,10 +13,12 @@ public class PlayerControl : MonoBehaviour
     public float fireRate = 0.5f;
     private float nextFire;
 
+    private AudioSource shotsound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     { 
-        
+        shotsound = GetComponent<AudioSource>(); 
     }
      
      void FixedUpdate()
@@ -43,6 +45,7 @@ public class PlayerControl : MonoBehaviour
 
         nextFire=Time.time +fireRate;
         Instantiate(shot, shotSpawn.position,shotSpawn.rotation );
+        shotsound.Play();
             
         }
     }
